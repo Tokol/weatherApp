@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/weather_app.dart';
+import 'package:flutter_app/weather_home.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 class SplashScreen extends StatefulWidget {
@@ -21,8 +22,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     var result = await _weatherApp.requestWeatherFromLatLon(position.latitude, position.longitude);
 
+    print(result);
+
     if(result!=null){
-      Navigator.pushNamed(context, 'home', arguments: {'weatherData':result});
+
+      Navigator.pushReplacementNamed(context, 'home');
+
     }
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/Weather.dart';
+import 'package:flutter_app/weather_app.dart';
 
 class WeatherHome extends StatefulWidget {
   @override
@@ -7,12 +8,22 @@ class WeatherHome extends StatefulWidget {
 }
 
 class _WeatherHomeState extends State<WeatherHome> {
+
+
+
+
+  gotoCity(){
+    Navigator.pushNamed(context, 'city');
+
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    final result = ModalRoute.of(context).settings.arguments as Map;
-
-
-    final weather = result["weatherData"];
+    WeatherApp _weatherApp = WeatherApp();
+    final weather = _weatherApp.weather;
 
     if(weather!=null){
         return Scaffold(
@@ -38,7 +49,9 @@ class _WeatherHomeState extends State<WeatherHome> {
                             color: Colors.white,
                             iconSize: 36.0,
                             icon: Icon(Icons.map),
-                            onPressed: () {}),
+                            onPressed: () {
+                              gotoCity();
+                            }),
                         IconButton(
                             color: Colors.white,
                             iconSize: 36.0,
@@ -73,7 +86,11 @@ class _WeatherHomeState extends State<WeatherHome> {
                             color: Colors.white,
                             iconSize: 42.0,
                             icon: Icon(Icons.location_on,),
-                            onPressed: () {}),
+                            onPressed: () {
+
+                              gotoCity();
+
+                            }),
 
                         Text('${weather.location}', style: TextStyle(
                             color: Colors.white,
