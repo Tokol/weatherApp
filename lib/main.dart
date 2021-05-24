@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/corona_screen.dart';
 import 'package:flutter_app/splash_screen.dart';
 import 'package:flutter_app/weather_home.dart';
 
@@ -13,15 +14,14 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    initialRoute: '/',
-    routes: {
-    '/': (context)=>SplashScreen(),
-    'home':(context)=>WeatherHome(),
-     'city':(context)=>CityScreen(),
-    },
+    home:CoronaScreen(
 
+
+    ),
+      
 
     );
   }
 }
+
 

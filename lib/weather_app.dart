@@ -15,7 +15,8 @@ class WeatherApp {
     return _weatherApp;
   }
 
-  static final String appKey = "own code";
+
+  static final String appKey = "eb41ad944236215dc78c4ad4c914177f";
 
   Future<Position> getLocation() async {
     try {
@@ -37,6 +38,8 @@ class WeatherApp {
 
     return weather;
   }
+
+
 
   Future<Weather> requestWeatherByCityName(String cityName) async {
     String requesUrl =
