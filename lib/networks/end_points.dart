@@ -9,8 +9,6 @@ final String mythEndpoints = "myths";
 
 final String hospitalEndpoints = "hospitals";
 
-final String mythUrl = "https://corona.askbhunte.com/api/v1/myths";
-
 Uri requestSummary(String country) {
   print("${baseURl}${country}");
   return Uri.parse("${baseURl}${country}");
