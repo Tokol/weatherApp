@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_app/models/covid_model.dart';
+import 'package:flutter_app/models/myths_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'end_points.dart';
@@ -51,18 +52,42 @@ class Network {
       response = await http.get(requestNepal(hospitalEndpoints));
 
       var result = json.decode(response.body);
+      return result;
 
     } catch (e) {
       print('somewthing went wrong');
     }
   }
 
-  Future<dynamic> getmyths() async {
+  Future<List<CovidMyths>> getmyths() async {
     try {
       http.Response response;
       response = await http.get(requestNepal(mythEndpoints));
 
       var result = json.decode(response.body);
+
+      var covidMythsData = result["data"];
+
+      List<CovidMyths> covidMyths = [];
+
+
+      for(int i=0; i<covidMythsData.length; i++){
+
+        covidMyths.add(CovidMyths(
+
+              mythEnglish: covidMythsData[i]["myth"],
+              mythNep: covidMythsData[i]["myth_np"],
+              realityEnglish: covidMythsData[i]["reality"],
+              realityNep: covidMythsData[i]["reality_np"],
+              newtworkImage: covidMythsData[i]["image_url"]
+
+        ));
+
+
+      }
+
+
+      return covidMyths;
     } catch (e) {
       print('somewthing went wrong');
     }
